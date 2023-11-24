@@ -8,6 +8,7 @@ const database = require("./src/configurations/database");
 const globalErrorHandler = require("./src/middlewares/globalErrorHandler");
 const postRoute = require("./src/routes/posts");
 const commentRoute = require("./src/routes/comments");
+const announceRoute = require("./src/routes/announcement");
 const app = express();
 
 // Use middleware
@@ -22,6 +23,7 @@ app.use("/", rootRoute);
 app.use("/users", usersRoute);
 app.use("/posts", postRoute);
 app.use("/comments", commentRoute);
+app.use("/announce", announceRoute);
 
 // Global error handler
 // app.use(globalErrorHandler);

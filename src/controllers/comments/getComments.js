@@ -4,8 +4,7 @@ const getComments = async (req, res) => {
    try {
       const result = await CommentModel.find();
       res.send(result);
-   } catch (err) {
-      console.log(err);
+   } catch {
       res.status(500).json("Internal server error");
    }
 };
