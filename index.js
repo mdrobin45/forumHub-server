@@ -2,9 +2,9 @@ const express = require("express");
 require("dotenv").config();
 const port = process.env.PORT || 3000;
 const cors = require("cors");
-const database = require("./configurations/database");
-const usersRoute = require("./routes/users");
-const rootRoute = require("./routes/root");
+const rootRoute = require("./src/routes/root");
+const usersRoute = require("./src/routes/users");
+const database = require("./src/configurations/database");
 const app = express();
 
 // Use middleware
