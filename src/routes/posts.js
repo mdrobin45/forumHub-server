@@ -4,13 +4,17 @@ const addPost = require("../controllers/posts/addPost");
 const updatePost = require("../controllers/posts/updatePost");
 const deletePost = require("../controllers/posts/deletePost");
 const getPosts = require("../controllers/posts/getPosts");
+const getPostByUser = require("../controllers/posts/getPostByUser");
 const postRoute = express.Router();
-
-// Get single post
-postRoute.get("/:id", getSinglePost);
 
 // Get all post
 postRoute.get("/", getPosts);
+
+// Get post by user
+postRoute.get("/user", getPostByUser);
+
+// Get single post
+postRoute.get("/:id", getSinglePost);
 
 // update single post
 postRoute.put("/:id", updatePost);

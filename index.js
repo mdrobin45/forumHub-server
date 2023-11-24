@@ -7,6 +7,7 @@ const usersRoute = require("./src/routes/users");
 const database = require("./src/configurations/database");
 const globalErrorHandler = require("./src/middlewares/globalErrorHandler");
 const postRoute = require("./src/routes/posts");
+const commentRoute = require("./src/routes/comments");
 const app = express();
 
 // Use middleware
@@ -20,9 +21,10 @@ database();
 app.use("/", rootRoute);
 app.use("/users", usersRoute);
 app.use("/posts", postRoute);
+app.use("/comments", commentRoute);
 
 // Global error handler
-app.use(globalErrorHandler);
+// app.use(globalErrorHandler);
 
 // Listen server
 app.listen(port, () => {

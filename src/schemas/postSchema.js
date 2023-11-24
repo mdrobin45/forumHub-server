@@ -7,7 +7,7 @@ const postSchema = mongoose.Schema({
    postTime: { type: String, required: true },
    upVote: { type: Number, default: 0 },
    downVote: { type: Number, default: 0 },
-   author: { type: mongoose.Types.ObjectId, ref: "Users" },
+   email: { type: String },
 });
 
 module.exports = postSchema;
