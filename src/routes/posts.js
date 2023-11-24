@@ -5,6 +5,7 @@ const updatePost = require("../controllers/posts/updatePost");
 const deletePost = require("../controllers/posts/deletePost");
 const getPosts = require("../controllers/posts/getPosts");
 const getPostByUser = require("../controllers/posts/getPostByUser");
+const uploadMultiple = require("../controllers/posts/uploadMultiple");
 const postRoute = express.Router();
 
 // Get all post
@@ -24,6 +25,9 @@ postRoute.delete("/:id", deletePost);
 
 // add single post
 postRoute.post("/", addPost);
+
+// add single post
+postRoute.post("/multiple", uploadMultiple);
 
 // Export router
 module.exports = postRoute;

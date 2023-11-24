@@ -26,7 +26,7 @@ app.use("/comments", commentRoute);
 app.use("/announce", announceRoute);
 
 // Global error handler
-// app.use(globalErrorHandler);
+app.use(globalErrorHandler);
 
 // Listen server
 app.listen(port, () => {

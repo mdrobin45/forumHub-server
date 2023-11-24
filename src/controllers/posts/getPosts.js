@@ -2,7 +2,7 @@ const { PostModel } = require("../../models/models");
 
 const getPosts = async (req, res) => {
    try {
-      const result = await PostModel.find();
+      const result = await PostModel.find().populate("author");
       res.send(result);
    } catch {
       res.status(500).json("Internal server error");

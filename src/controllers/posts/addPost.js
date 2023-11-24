@@ -4,7 +4,7 @@ const addPost = async (req, res) => {
    try {
       const postData = req.body;
 
-      const result = await PostModel(postData).save();
+      const result = PostModel(postData).save();
 
       res.status(200).json({ id: result._id, message: "Post added" });
    } catch {
