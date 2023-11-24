@@ -5,6 +5,8 @@ const cors = require("cors");
 const rootRoute = require("./src/routes/root");
 const usersRoute = require("./src/routes/users");
 const database = require("./src/configurations/database");
+const globalErrorHandler = require("./src/middlewares/globalErrorHandler");
+const postRoute = require("./src/routes/posts");
 const app = express();
 
 // Use middleware
@@ -17,6 +19,10 @@ database();
 // Application routes
 app.use("/", rootRoute);
 app.use("/users", usersRoute);
+app.use("/posts", postRoute);
+
+// Global error handler
+app.use(globalErrorHandler);
 
 // Listen server
 app.listen(port, () => {
