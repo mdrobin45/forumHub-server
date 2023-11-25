@@ -1,4 +1,7 @@
 const express = require("express");
+const cookieParser = require("cookie-parser");
+const app = express();
+app.use(cookieParser());
 require("dotenv").config();
 const port = process.env.PORT || 3000;
 const cors = require("cors");
@@ -9,10 +12,10 @@ const globalErrorHandler = require("./src/middlewares/globalErrorHandler");
 const postRoute = require("./src/routes/posts");
 const commentRoute = require("./src/routes/comments");
 const announceRoute = require("./src/routes/announcement");
-const app = express();
 
 // Use middleware
-app.use(cors());
+
+app.use(cors({ credentials: true, origin: process.env.CLIENT_URL }));
 app.use(express.json());
 
 // Database connection

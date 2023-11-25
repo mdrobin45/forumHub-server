@@ -4,6 +4,8 @@ const getCommentsByUser = require("../controllers/comments/getCommentsByUser");
 const addComment = require("../controllers/comments/addComment");
 const addMultipleComment = require("../controllers/comments/addMultiple");
 const commentCount = require("../controllers/comments/countComments");
+const verifyToken = require("../middlewares/verifyUser");
+const verifyUser = require("../middlewares/verifyUser");
 const commentRoute = express.Router();
 
 // Get all comment
@@ -16,7 +18,7 @@ commentRoute.get("/user", getCommentsByUser);
 commentRoute.get("/count", commentCount);
 
 // Add comment
-commentRoute.post("/", addComment);
+commentRoute.post("/", verifyUser([]), addComment);
 
 // add multiple
 commentRoute.post("/multiple", addMultipleComment);

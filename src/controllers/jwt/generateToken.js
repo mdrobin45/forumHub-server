@@ -7,7 +7,12 @@ const generateToken = async (req, res) => {
          expiresIn: "1h",
       });
 
-      res.send({ token });
+      // Set token in cookie
+      res.cookie("authToken", token, {
+         maxAge: 216000,
+         httpOnly: true,
+      });
+      res.status(200).json({ token: token });
    } catch {
       res.status(500).json("Internal server error");
    }
