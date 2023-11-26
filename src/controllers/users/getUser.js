@@ -1,13 +1,13 @@
 const { UserModel } = require("../../models/models");
 
-const getUserRole = async (req, res) => {
+const getUser = async (req, res) => {
    try {
       const { email } = req.query;
       const result = await UserModel.findOne({ email });
-      res.status(200).json({ role: result.role });
+      res.send(result);
    } catch {
       res.status(500).json("Internal server error");
    }
 };
 
-module.exports = getUserRole;
+module.exports = getUser;
