@@ -8,6 +8,8 @@ const getPostByUser = require("../controllers/posts/getPostByUser");
 const uploadMultiple = require("../controllers/posts/uploadMultiple");
 const getPostsByVote = require("../controllers/posts/getPostsByVote");
 const searchByTag = require("../controllers/posts/searchByTag");
+const upVote = require("../controllers/posts/upvote");
+const downVote = require("../controllers/posts/downVote");
 const postRoute = express.Router();
 
 // Get all post
@@ -35,6 +37,12 @@ postRoute.post("/", addPost);
 
 // add single post
 postRoute.post("/multiple", uploadMultiple);
+
+// Update upvote
+postRoute.put("/upvote/:id", upVote);
+
+// Update downVote
+postRoute.put("/downvote/:id", downVote);
 
 // Export router
 module.exports = postRoute;
