@@ -14,7 +14,6 @@ const getPostsByVote = async (req, res) => {
             },
          },
       ]).exec();
-      console.log(result);
       res.json(result);
    } catch {
       res.status(500).json("Internal server error");

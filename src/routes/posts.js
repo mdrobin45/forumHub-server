@@ -7,10 +7,14 @@ const getPosts = require("../controllers/posts/getPosts");
 const getPostByUser = require("../controllers/posts/getPostByUser");
 const uploadMultiple = require("../controllers/posts/uploadMultiple");
 const getPostsByVote = require("../controllers/posts/getPostsByVote");
+const searchByTag = require("../controllers/posts/searchByTag");
 const postRoute = express.Router();
 
 // Get all post
 postRoute.get("/", getPosts);
+
+// Search post by tag
+postRoute.get("/tag-search", searchByTag);
 
 // Get post by user
 postRoute.get("/user", getPostByUser);

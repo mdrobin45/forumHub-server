@@ -13,6 +13,7 @@ const postRoute = require("./src/routes/posts");
 const commentRoute = require("./src/routes/comments");
 const announceRoute = require("./src/routes/announcement");
 const paymentRoute = require("./src/routes/payment");
+const tagRoute = require("./src/routes/tag");
 
 // Use middleware
 
@@ -29,6 +30,7 @@ app.use("/posts", postRoute);
 app.use("/comments", commentRoute);
 app.use("/announce", announceRoute);
 app.use("/payment", paymentRoute);
+app.use("/tags", tagRoute);
 
 // Global error handler
 app.use(globalErrorHandler);

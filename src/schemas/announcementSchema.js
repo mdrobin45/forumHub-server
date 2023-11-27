@@ -2,12 +2,11 @@ const mongoose = require("mongoose");
 
 const announcementSchema = mongoose.Schema({
    authorName: { type: String, required: true },
-   authorImage: { type: String, required: true },
+   image: { type: String, required: true },
    title: { type: String, required: true },
    description: { type: String, required: true },
-   ago: { type: String, required: true },
-   voice: { type: Number, default: 0 },
-   replies: { type: Number, default: 0 },
+   status: { type: String },
+   ago: { type: String },
 });
 
 module.exports = announcementSchema;
