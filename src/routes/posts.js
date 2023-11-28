@@ -11,6 +11,7 @@ const searchByTag = require("../controllers/posts/searchByTag");
 const upVote = require("../controllers/posts/upvote");
 const downVote = require("../controllers/posts/downVote");
 const verifyUser = require("../middlewares/verifyUser");
+const totalPosts = require("../controllers/posts/totalPosts");
 const postRoute = express.Router();
 
 // Get all post
@@ -23,6 +24,9 @@ postRoute.get("/tag-search", searchByTag);
 postRoute.get("/user", getPostByUser);
 
 postRoute.get("/byVote", getPostsByVote);
+
+// Total posts
+postRoute.get("/total", verifyUser(["admin"]), totalPosts);
 
 // Get single post
 postRoute.get("/:id", getSinglePost);

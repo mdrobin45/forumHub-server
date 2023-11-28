@@ -7,6 +7,7 @@ const verifyUser = require("../middlewares/verifyUser");
 const getCommentsByPost = require("../controllers/comments/getCommentsByPost");
 const reportComment = require("../controllers/comments/report");
 const getReportedComments = require("../controllers/comments/getReportedComments");
+const totalComments = require("../controllers/comments/totalComments");
 const commentRoute = express.Router();
 
 // Get all comment
@@ -17,6 +18,9 @@ commentRoute.get("/post", verifyUser(["member"]), getCommentsByPost);
 
 // Count post comments
 commentRoute.get("/count", commentCount);
+
+// total comments
+commentRoute.get("/total", verifyUser(["admin"]), totalComments);
 
 // Report comment
 commentRoute.post("/report", verifyUser(["member"]), reportComment);

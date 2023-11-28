@@ -5,6 +5,7 @@ const userSchema = new mongoose.Schema({
    email: { type: String, required: true },
    image: { type: String, required: true },
    isPremiumMember: { type: Boolean, required: true },
+   isBlock: { type: Boolean, default: false },
    role: { type: String, enum: ["admin", "member"] },
 });
 

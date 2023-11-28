@@ -7,8 +7,7 @@ const addTag = async (req, res) => {
       const result = await TagModel({ name: tag }).save();
 
       res.status(200).json({ id: result._id, message: "Tag added" });
-   } catch (err) {
-      console.log(err);
+   } catch {
       res.status(500).json("Internal server error");
    }
 };

@@ -5,6 +5,7 @@ const getUser = require("../controllers/users/getUser");
 const getAllUser = require("../controllers/users/getAllUsers");
 const searchUser = require("../controllers/users/searchUser");
 const verifyUser = require("../middlewares/verifyUser");
+const totalUsers = require("../controllers/users/totalUsers");
 const usersRoute = express.Router();
 
 // Add new user
@@ -18,6 +19,9 @@ usersRoute.get("/all", verifyUser(["admin"]), getAllUser);
 
 // Search user
 usersRoute.get("/search", verifyUser(["admin"]), searchUser);
+
+// Total user count
+usersRoute.get("/total", verifyUser(["admin"]), totalUsers);
 
 // Update user data
 usersRoute.patch("/", verifyUser(["member", "admin"]), updateUser);
