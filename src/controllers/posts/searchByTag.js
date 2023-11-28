@@ -2,7 +2,8 @@ const { PostModel } = require("../../models/models");
 
 const searchByTag = async (req, res) => {
    try {
-      const { search } = req.query;
+      let { search } = req.query;
+      search = search.toLowerCase();
 
       const result = await PostModel.find({ tag: search }).populate("author");
       res.send(result);

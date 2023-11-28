@@ -13,21 +13,22 @@ const commentRoute = express.Router();
 commentRoute.get("/", getComments);
 
 // Get comment by post
-commentRoute.get("/post", getCommentsByPost);
+commentRoute.get("/post", verifyUser(["member"]), getCommentsByPost);
 
 // Count post comments
 commentRoute.get("/count", commentCount);
 
 // Report comment
-commentRoute.post("/report", reportComment);
+commentRoute.post("/report", verifyUser(["member"]), reportComment);
 
 // get reported comments
-commentRoute.get("/report/all", getReportedComments);
+commentRoute.get("/report/all", verifyUser(["admin"]), getReportedComments);
 
 // Add comment
-commentRoute.post("/", verifyUser([]), addComment);
+commentRoute.post("/", verifyUser(["member"]), addComment);
 
 // add multiple
 commentRoute.post("/multiple", addMultipleComment);
+
 // Export routes
 module.exports = commentRoute;

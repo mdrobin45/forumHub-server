@@ -10,6 +10,7 @@ const getPostsByVote = require("../controllers/posts/getPostsByVote");
 const searchByTag = require("../controllers/posts/searchByTag");
 const upVote = require("../controllers/posts/upvote");
 const downVote = require("../controllers/posts/downVote");
+const verifyUser = require("../middlewares/verifyUser");
 const postRoute = express.Router();
 
 // Get all post
@@ -27,22 +28,22 @@ postRoute.get("/byVote", getPostsByVote);
 postRoute.get("/:id", getSinglePost);
 
 // update single post
-postRoute.patch("/:id", updatePost);
+postRoute.patch("/:id", verifyUser(["member"]), updatePost);
 
 // delete single post
-postRoute.delete("/:id", deletePost);
+postRoute.delete("/:id", verifyUser(["member"]), deletePost);
 
 // add single post
-postRoute.post("/", addPost);
+postRoute.post("/", verifyUser(["member"]), addPost);
 
-// add single post
+// add multiple post
 postRoute.post("/multiple", uploadMultiple);
 
 // Update upvote
-postRoute.put("/upvote/:id", upVote);
+postRoute.put("/upvote/:id", verifyUser(["member"]), upVote);
 
 // Update downVote
-postRoute.put("/downvote/:id", downVote);
+postRoute.put("/downvote/:id", verifyUser(["member"]), downVote);
 
 // Export router
 module.exports = postRoute;

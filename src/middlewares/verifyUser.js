@@ -1,9 +1,9 @@
 const jwt = require("jsonwebtoken");
+const { UserModel } = require("../models/models");
 
 const verifyUser = (roles) => async (req, res, next) => {
    try {
       const { authToken } = req.cookies;
-      console.log(authToken);
 
       // If token is exist
       if (!authToken) {
@@ -34,8 +34,7 @@ const verifyUser = (roles) => async (req, res, next) => {
       } else {
          res.status(401).json({ message: "Authentication error" });
       }
-   } catch (err) {
-      console.log(err);
+   } catch {
       res.status(401).json({ message: "Authentication error" });
    }
 };
