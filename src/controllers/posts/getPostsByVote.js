@@ -2,7 +2,7 @@ const { PostModel } = require("../../models/models");
 
 const getPostsByVote = async (req, res) => {
    try {
-      const result = PostModel.aggregate([
+      const result = await PostModel.aggregate([
          {
             $addFields: {
                voteDifference: { $subtract: ["$upVote", "$downVote"] },
@@ -13,7 +13,7 @@ const getPostsByVote = async (req, res) => {
                voteDifference: -1,
             },
          },
-      ]).exec();
+      ]);
       res.json(result);
    } catch {
       res.status(500).json("Internal server error");

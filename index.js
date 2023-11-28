@@ -16,7 +16,6 @@ const paymentRoute = require("./src/routes/payment");
 const tagRoute = require("./src/routes/tag");
 
 // Use middleware
-
 app.use(cors({ credentials: true, origin: process.env.CLIENT_URL }));
 app.use(express.json());
 

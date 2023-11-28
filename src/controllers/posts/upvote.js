@@ -6,6 +6,7 @@ const upVote = async (req, res) => {
       await PostModel.findByIdAndUpdate(id, {
          $inc: { upVote: 1 },
       });
+
       res.status(200).json({ status: 200 });
    } catch {
       res.status(500).json("Internal server error");

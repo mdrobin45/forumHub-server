@@ -11,6 +11,8 @@ const generateToken = async (req, res) => {
       res.cookie("authToken", token, {
          maxAge: 216000,
          httpOnly: true,
+         secure: process.env.NODE_ENV === "production",
+         sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
       });
       res.status(200).json({ token: token });
    } catch {
