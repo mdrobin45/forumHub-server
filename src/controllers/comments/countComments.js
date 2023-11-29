@@ -8,8 +8,7 @@ const commentCount = async (req, res) => {
       });
 
       res.status(200).json({ count: result });
-   } catch (err) {
-      console.log(err);
+   } catch {
       res.status(500).json("Internal server error");
    }
 };
