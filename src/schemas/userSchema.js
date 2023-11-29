@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
    isPremiumMember: { type: Boolean, required: true },
    isBlock: { type: Boolean, default: false },
    role: { type: String, enum: ["admin", "member"] },
+   bio: { type: String },
 });
 
 // Export schema

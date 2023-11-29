@@ -8,7 +8,7 @@ const updateUser = async (req, res) => {
       const result = await UserModel.updateOne({ email }, data);
 
       if (result.modifiedCount > 0) {
-         res.status(200).json({ message: "user updated" });
+         res.status(200).json({ status: 200, message: "user updated" });
       }
    } catch {
       res.status(500).json("Internal server error");

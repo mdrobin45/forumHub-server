@@ -23,6 +23,7 @@ const verifyUser = (roles) => async (req, res, next) => {
             const user = await UserModel.findOne({ email });
             if (!roles.includes(user.role)) {
                res.status(403).json({ error: "You are not allowed to access" });
+               return;
             }
 
             req.decoded;
